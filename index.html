@@ -1,629 +1,195 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Planes de Natación - Diego Bonilla</title>
-  <meta name="description" content="Planes de clases de natación por grupos: Flex, Evolución y Pro. Duración 1 hora. Cupos limitados. WhatsApp para inscribirte." />
+  <meta charset="UTF-8">
+  <title>Planes de Natación | Diego Bonilla</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    :root{
-      --bg:#0b1220;
-      --card:#0f172a;
-      --muted:#94a3b8;
-      --text:#e2e8f0;
-      --soft:#111b33;
-      --border:rgba(148,163,184,.18);
-
-      --green:#22c55e;
-      --blue:#3b82f6;
-      --red:#ef4444;
-
-      --pill:rgba(226,232,240,.08);
-      --shadow: 0 18px 40px rgba(0,0,0,.35);
-      --radius:22px;
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #1f2937;
     }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 700px at 20% 10%, rgba(59,130,246,.20), transparent 60%),
-                  radial-gradient(1000px 600px at 90% 20%, rgba(34,197,94,.18), transparent 55%),
-                  radial-gradient(1100px 700px at 60% 90%, rgba(239,68,68,.16), transparent 60%),
-                  var(--bg);
-      color:var(--text);
-      line-height:1.45;
+    h1 {
+      text-align: center;
+      margin: 30px 15px 10px;
+      font-size: 2rem;
     }
 
-    a{color:inherit}
-    .wrap{
-      width:min(1100px, 92vw);
-      margin: 0 auto;
-      padding: 28px 0 90px;
+    .subtitle {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1rem;
+      color: #4b5563;
     }
 
-    /* Header */
-    .header{
-      display:flex;
-      gap:16px;
-      align-items:flex-start;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      padding: 22px 22px 16px;
-      background: rgba(15,23,42,.65);
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px 40px;
     }
 
-    .brand{
-      display:flex;
-      gap:14px;
-      align-items:center;
-    }
-
-    .logo{
-      width:46px;height:46px;border-radius:14px;
-      display:grid;place-items:center;
-      background: linear-gradient(145deg, rgba(59,130,246,.35), rgba(34,197,94,.25));
-      border:1px solid var(--border);
-      font-size:24px;
-    }
-
-    h1{
-      margin:0;
-      font-size: clamp(22px, 3.2vw, 34px);
-      letter-spacing:.2px;
-    }
-
-    .sub{
-      margin:6px 0 0;
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 14px;
-    }
-
-    .badges{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:10px;
-    }
-    .badge{
-      background: var(--pill);
-      border:1px solid var(--border);
-      padding:8px 10px;
-      border-radius: 999px;
-      font-size: 13px;
-      color: #d7e2f1;
-      display:flex; align-items:center; gap:8px;
-      white-space:nowrap;
-    }
-    .badge b{color:#fff}
-
-    .ctaTop{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      align-items:flex-end;
-      min-width: 260px;
-    }
-    .note{
-      font-size:13px;
-      color: var(--muted);
-      text-align:right;
-    }
-
-    /* Grid cards */
-    .grid{
-      margin-top: 18px;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    @media (max-width: 980px){
-      .grid{grid-template-columns: 1fr;}
-      .ctaTop{align-items:flex-start; min-width:auto}
-      .note{text-align:left}
-    }
-
-    .card{
-      background: rgba(15,23,42,.70);
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      backdrop-filter: blur(10px);
-      display:flex;
-      flex-direction:column;
-      min-height: 520px;
-    }
-
-    .cardHeader{
-      padding:18px 18px 14px;
-      border-bottom: 1px solid var(--border);
-      position:relative;
-    }
-
-    .tag{
-      position:absolute;
-      top:14px; right:14px;
-      font-size:12px;
-      padding:7px 10px;
-      border-radius:999px;
-      background: rgba(255,255,255,.08);
-      border:1px solid var(--border);
-      color:#fff;
-      font-weight:700;
-      letter-spacing:.2px;
-    }
-
-    .planName{
-      margin:0;
-      font-size: 22px;
-      display:flex; align-items:center; gap:10px;
-    }
-    .planDesc{
-      margin:8px 0 0;
-      color: var(--muted);
-      font-weight: 650;
-      font-size: 13px;
-    }
-
-    .stripe{
-      height:6px;
-      width:100%;
-      background: linear-gradient(90deg, rgba(255,255,255,.12), rgba(255,255,255,.02));
-    }
-
-    .content{
-      padding:16px 18px 0;
-      display:flex;
-      flex-direction:column;
+    .plan {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
       gap: 14px;
-      flex:1;
     }
 
-    .kpis{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
+    .flex { border-top: 6px solid #22c55e; }
+    .evolucion { border-top: 6px solid #3b82f6; }
+    .pro { border-top: 6px solid #ef4444; }
+
+    .plan h2 {
+      margin: 0;
+      font-size: 1.5rem;
     }
 
-    .kpi{
-      background: rgba(226,232,240,.06);
-      border:1px solid var(--border);
-      border-radius: 16px;
-      padding:10px 12px;
-    }
-    .kpi small{color:var(--muted); font-weight:700; display:block; margin-bottom:3px}
-    .kpi b{font-size:14px}
-
-    ul{
-      margin:0;
-      padding:0;
-      list-style:none;
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
-    li{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      background: rgba(226,232,240,.04);
-      border:1px solid var(--border);
-      border-radius: 14px;
-      padding:10px 12px;
-      font-weight: 650;
-      color:#e8f0ff;
-    }
-    li span{
-      color: var(--muted);
-      font-weight: 750;
-      min-width: 18px;
-      display:inline-block;
-    }
-
-    .prices{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:10px;
-      margin-top: 2px;
-    }
-    .priceBox{
-      background: rgba(226,232,240,.06);
-      border:1px solid var(--border);
-      border-radius: 16px;
-      padding:12px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-    }
-    .priceBox .left{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-    }
-    .priceBox .left small{
-      color: var(--muted);
-      font-weight: 800;
-      letter-spacing:.2px;
-    }
-    .priceBox .left b{
-      font-size: 16px;
-    }
-    .price{
-      font-size: 18px;
-      font-weight: 900;
-      white-space:nowrap;
-    }
-
-    .actions{
-      padding: 14px 18px 18px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      border:1px solid var(--border);
-      background: rgba(226,232,240,.08);
-      color:#fff;
-      padding:12px 14px;
-      border-radius: 14px;
-      text-decoration:none;
-      font-weight: 850;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      transition: transform .12s ease;
-      cursor:pointer;
-    }
-    .btn:hover{transform: translateY(-1px)}
-    .btn.primary{
-      border:none;
-      background: #25D366;
-      color:#06240f;
-      font-weight: 950;
-    }
-    .btn.secondary{
-      background: rgba(59,130,246,.12);
-      border:1px solid rgba(59,130,246,.35);
-      color:#eaf2ff;
-    }
-
-    .footNotes{
-      margin-top: 16px;
-      background: rgba(15,23,42,.65);
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 16px 18px;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:14px;
-      backdrop-filter: blur(10px);
-    }
-
-    @media (max-width: 980px){
-      .footNotes{grid-template-columns: 1fr}
-    }
-
-    .footNotes h3{
-      margin:0 0 8px;
-      font-size: 16px;
-    }
-    .footNotes p{
-      margin:0;
-      color: var(--muted);
-      font-weight: 650;
-      font-size: 13px;
-    }
-
-    .policyList{
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-      margin-top: 10px;
-    }
-    .policy{
-      border-radius: 14px;
-      padding:10px 12px;
-      border:1px solid var(--border);
-      background: rgba(226,232,240,.04);
-      font-weight: 750;
-      color:#e8f0ff;
-    }
-    .policy .ok{color: var(--green); font-weight: 950}
-    .policy .warn{color: var(--red); font-weight: 950}
-
-    .capBox{
-      border-radius: 16px;
-      padding: 12px;
-      border:1px solid var(--border);
-      background: rgba(226,232,240,.06);
-    }
-    .capBox b{display:block; margin-bottom:6px}
-    .capBox small{color: var(--muted); font-weight: 700}
-
-    /* Accent per plan */
-    .flex .stripe{background: linear-gradient(90deg, rgba(34,197,94,.9), rgba(34,197,94,.05))}
-    .evo  .stripe{background: linear-gradient(90deg, rgba(59,130,246,.95), rgba(59,130,246,.05))}
-    .pro  .stripe{background: linear-gradient(90deg, rgba(239,68,68,.95), rgba(239,68,68,.05))}
-
-    .flex .tag{background: rgba(34,197,94,.20); border:1px solid rgba(34,197,94,.35)}
-    .evo  .tag{background: rgba(59,130,246,.22); border:1px solid rgba(59,130,246,.40)}
-    .pro  .tag{background: rgba(239,68,68,.20); border:1px solid rgba(239,68,68,.38)}
-
-    /* highlight middle card (Evolución) */
-    .evo{
-      transform: translateY(-6px);
-      border:1px solid rgba(59,130,246,.45);
-    }
-    @media (max-width: 980px){
-      .evo{transform:none}
-    }
-
-    /* Floating WhatsApp */
-    .whatsapp-float{
-      position: fixed;
-      bottom: 18px;
-      right: 18px;
-      width: 64px;
-      height: 64px;
+    .tag {
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: white;
+      display: inline-block;
+      padding: 4px 10px;
       border-radius: 999px;
-      background: #25D366;
-      color: #06240f;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size: 28px;
-      text-decoration:none;
-      box-shadow: 0 18px 40px rgba(0,0,0,.45);
-      z-index: 9999;
-      border: 2px solid rgba(255,255,255,.25);
-      transition: transform .12s ease;
+      margin-bottom: 10px;
     }
-    .whatsapp-float:hover{transform: scale(1.06)}
 
-    /* Small helper */
-    .mono{font-variant-numeric: tabular-nums;}
+    .tag.flex { background: #22c55e; }
+    .tag.evolucion { background: #3b82f6; }
+    .tag.pro { background: #ef4444; }
+
+    ul {
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+
+    .price-box {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    .price-box strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .important {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff7ed;
+      border-left: 6px solid #f97316;
+      padding: 20px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+    }
+
+    .important strong {
+      color: #b45309;
+    }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <section class="header">
-      <div>
-        <div class="brand">
-          <div class="logo">🏊‍♂️</div>
-          <div>
-            <h1>Clases de Natación • Diego Bonilla</h1>
-            <p class="sub">Conjunto residencial • Clases grupales • <b>1 hora por clase</b></p>
-            <div class="badges">
-              <div class="badge">👥 Válido para <b>niños, jóvenes y adultos</b></div>
-              <div class="badge">🎯 Cupos limitados por grupo</div>
-              <div class="badge">📍 Proceso guiado según nivel</div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="ctaTop">
-        <a class="btn primary" target="_blank"
-           href="https://wa.me/573002591978?text=Hola%20Diego,%20quiero%20información%20para%20inscribirme%20a%20las%20clases%20de%20natación.">
-          💬 Escribir por WhatsApp
-        </a>
-        <div class="note">
-          Respuesta más rápida por WhatsApp.<br/>
-          <span class="mono">+57 300 259 1978</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="grid">
-
-      <!-- PLAN FLEX -->
-      <article class="card flex">
-        <div class="cardHeader">
-          <div class="tag">PLAN FLEX</div>
-          <h2 class="planName">🟢 Empezar con tranquilidad</h2>
-          <p class="planDesc">Ideal para iniciar, retomar o avanzar sin presión con acompañamiento guiado.</p>
-        </div>
-        <div class="stripe"></div>
-
-        <div class="content">
-          <div class="kpis">
-            <div class="kpi"><small>Tipo</small><b>Grupal</b></div>
-            <div class="kpi"><small>Grupo</small><b>Hasta 6 personas</b></div>
-            <div class="kpi"><small>Acompañamiento</small><b>Presencial</b></div>
-            <div class="kpi"><small>Correcciones</small><b>Generales</b></div>
-          </div>
-
-          <ul>
-            <li><span>✓</span> Clase guiada paso a paso</li>
-            <li><span>✓</span> Ritmo de aprendizaje tranquilo</li>
-            <li><span>✓</span> Enfoque: seguridad, confianza y técnica base</li>
-            <li><span>✓</span> Control corporal y desplazamientos eficientes</li>
-          </ul>
-
-          <div class="prices">
-            <div class="priceBox">
-              <div class="left">
-                <small>4 clases / mes</small>
-                <b>Plan FLEX</b>
-              </div>
-              <div class="price mono">$215.000</div>
-            </div>
-
-            <div class="priceBox">
-              <div class="left">
-                <small>8 clases / mes</small>
-                <b>Plan FLEX</b>
-              </div>
-              <div class="price mono">$355.000</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="actions">
-          <a class="btn primary" target="_blank"
-             href="https://wa.me/573002591978?text=Hola%20Diego,%20quiero%20inscribirme%20al%20PLAN%20FLEX.%20¿Me%20compartes%20horarios%20y%20cupos%20disponibles%3F">
-            💬 WhatsApp Plan FLEX
-          </a>
-          <a class="btn secondary" href="#info">📌 Ver info importante</a>
-        </div>
-      </article>
-
-      <!-- PLAN EVOLUCIÓN -->
-      <article class="card evo">
-        <div class="cardHeader">
-          <div class="tag">⭐ RECOMENDADO</div>
-          <h2 class="planName">🔵 Progreso real sesión a sesión</h2>
-          <p class="planDesc">Ideal para avanzar constante, mejorar técnica y ver progreso medible.</p>
-        </div>
-        <div class="stripe"></div>
-
-        <div class="content">
-          <div class="kpis">
-            <div class="kpi"><small>Tipo</small><b>Grupal semi-reducido</b></div>
-            <div class="kpi"><small>Grupo</small><b>Máx. 3–4 personas</b></div>
-            <div class="kpi"><small>Atención</small><b>Más cercana</b></div>
-            <div class="kpi"><small>Seguimiento</small><b>Sesión a sesión</b></div>
-          </div>
-
-          <ul>
-            <li><span>✓</span> Clases planificadas y progresivas</li>
-            <li><span>✓</span> Correcciones más detalladas</li>
-            <li><span>✓</span> Ritmo estable y notorio</li>
-            <li><span>✓</span> Enfoque: técnica precisa + continuidad + confianza</li>
-          </ul>
-
-          <div class="prices">
-            <div class="priceBox">
-              <div class="left">
-                <small>4 clases / mes</small>
-                <b>Plan EVOLUCIÓN</b>
-              </div>
-              <div class="price mono">$215.000</div>
-            </div>
-
-            <div class="priceBox">
-              <div class="left">
-                <small>8 clases / mes</small>
-                <b>Plan EVOLUCIÓN</b>
-              </div>
-              <div class="price mono">$340.000</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="actions">
-          <a class="btn primary" target="_blank"
-             href="https://wa.me/573002591978?text=Hola%20Diego,%20quiero%20inscribirme%20al%20PLAN%20EVOLUCI%C3%93N%20(Recommended).%20%C2%BFMe%20confirmas%20cupos%20y%20horarios%3F">
-            💬 WhatsApp Plan EVOLUCIÓN
-          </a>
-          <a class="btn secondary" href="#info">📌 Ver info importante</a>
-        </div>
-      </article>
-
-      <!-- PLAN PRO -->
-      <article class="card pro">
-        <div class="cardHeader">
-          <div class="tag">PLAN PRO</div>
-          <h2 class="planName">🔴 Avanzar más rápido</h2>
-          <p class="planDesc">Ideal para resultados más rápidos, atención prioritaria y proceso más personalizado.</p>
-        </div>
-        <div class="stripe"></div>
-
-        <div class="content">
-          <div class="kpis">
-            <div class="kpi"><small>Tipo</small><b>Grupo muy reducido</b></div>
-            <div class="kpi"><small>Grupo</small><b>1 a 2 personas</b></div>
-            <div class="kpi"><small>Atención</small><b>Prioritaria</b></div>
-            <div class="kpi"><small>Correcciones</small><b>Precisas y continuas</b></div>
-          </div>
-
-          <ul>
-            <li><span>✓</span> Clases planificadas y personalizadas</li>
-            <li><span>✓</span> Progreso controlado permanentemente</li>
-            <li><span>✓</span> Ritmo más rápido y sólido</li>
-            <li><span>✓</span> Enfoque: técnica fina + dominio + confianza total</li>
-          </ul>
-
-          <div class="prices">
-            <div class="priceBox">
-              <div class="left">
-                <small>4 clases / mes</small>
-                <b>Plan PRO</b>
-              </div>
-              <div class="price mono">$240.000</div>
-            </div>
-
-            <div class="priceBox">
-              <div class="left">
-                <small>8 clases / mes</small>
-                <b>Plan PRO</b>
-              </div>
-              <div class="price mono">$440.000</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="actions">
-          <a class="btn primary" target="_blank"
-             href="https://wa.me/573002591978?text=Hola%20Diego,%20quiero%20inscribirme%20al%20PLAN%20PRO.%20%C2%BFMe%20confirmas%20cupos%20y%20horarios%20disponibles%3F">
-            💬 WhatsApp Plan PRO
-          </a>
-          <a class="btn secondary" href="#info">📌 Ver info importante</a>
-        </div>
-      </article>
-
-    </section>
-
-    <!-- INFO -->
-    <section id="info" class="footNotes">
-      <div>
-        <h3>📌 Información importante</h3>
-        <p>
-          Todas las clases duran <b>1 hora</b>. Cupos limitados por grupo para garantizar calidad.
-          Cada persona avanza a su ritmo dentro del plan elegido.
-        </p>
-
-        <div class="policyList">
-          <div class="policy">✅ <span class="ok">Cupos limitados</span> por plan (para mantener calidad).</div>
-          <div class="policy">🧢 Gorro Antares: <b class="mono">$75.000</b> (pago único) • <span class="warn">Uso obligatorio</span> en clases.</div>
-          <div class="policy">🚫 <span class="warn">No hay reposición de clases ni reembolso de dinero</span> por inasistencias.</div>
-        </div>
-      </div>
-
-      <div class="capBox">
-        <b>¿Quieres que te ayude a elegir?</b>
-        <small>
-          Escríbeme por WhatsApp y te recomiendo el plan ideal según tu objetivo y disponibilidad.
-        </small>
-        <div style="margin-top:12px;">
-          <a class="btn primary" target="_blank"
-             href="https://wa.me/573002591978?text=Hola%20Diego,%20%C2%BFMe%20ayudas%20a%20elegir%20el%20plan%20ideal%20para%20m%C3%AD%20o%20mi%20hijo%2Fhija%3F">
-            💬 WhatsApp ahora
-          </a>
-        </div>
-      </div>
-    </section>
+  <h1>🏊‍♂️ Planes de Natación</h1>
+  <div class="subtitle">
+    Clases grupales · Duración 1 hora · Niños, jóvenes y adultos
   </div>
 
-  <!-- BOTÓN FLOTANTE WHATSAPP (SIEMPRE VISIBLE) -->
-  <a class="whatsapp-float" target="_blank"
-     href="https://wa.me/573002591978?text=Hola%20Diego,%20quiero%20informaci%C3%B3n%20sobre%20las%20clases%20de%20nataci%C3%B3n."
-     aria-label="WhatsApp">
-    💬
-  </a>
+  <section class="plans">
+
+    <!-- PLAN FLEX -->
+    <div class="plan flex">
+      <span class="tag flex">PLAN FLEX</span>
+      <h2>Empezar con tranquilidad</h2>
+      <ul>
+        <li>Clases grupales</li>
+        <li>Hasta 6 personas por grupo</li>
+        <li>Acompañamiento presencial</li>
+        <li>Clase guiada paso a paso</li>
+        <li>Correcciones generales</li>
+        <li>Ritmo de aprendizaje tranquilo</li>
+        <li>Enfoque: seguridad, confianza y técnica base</li>
+      </ul>
+
+      <div class="price-box">
+        <strong>Precios</strong>
+        4 clases / mes: $215.000<br>
+        8 clases / mes: $355.000
+      </div>
+    </div>
+
+    <!-- PLAN EVOLUCIÓN -->
+    <div class="plan evolucion">
+      <span class="tag evolucion">⭐ PLAN EVOLUCIÓN (Recomendado)</span>
+      <h2>Progreso real sesión a sesión</h2>
+      <ul>
+        <li>Clases grupales semi-reducidas</li>
+        <li>Máx. 3–4 personas por grupo</li>
+        <li>Mayor atención del entrenador</li>
+        <li>Clases planificadas y progresivas</li>
+        <li>Correcciones detalladas</li>
+        <li>Seguimiento del avance</li>
+        <li>Enfoque: técnica precisa y continuidad</li>
+      </ul>
+
+      <div class="price-box">
+        <strong>Precios</strong>
+        4 clases / mes: $215.000<br>
+        8 clases / mes: $340.000
+      </div>
+    </div>
+
+    <!-- PLAN PRO -->
+    <div class="plan pro">
+      <span class="tag pro">PLAN PRO</span>
+      <h2>Avanzar más rápido</h2>
+      <ul>
+        <li>Grupo muy reducido</li>
+        <li>1 a 2 personas por clase</li>
+        <li>Atención prioritaria</li>
+        <li>Clases personalizadas</li>
+        <li>Correcciones precisas y continuas</li>
+        <li>Progreso controlado</li>
+        <li>Enfoque: dominio, confianza y seguridad total</li>
+      </ul>
+
+      <div class="price-box">
+        <strong>Precios</strong>
+        4 clases / mes: $240.000<br>
+        8 clases / mes: $440.000
+      </div>
+    </div>
+
+  </section>
+
+  <div class="important">
+    <strong>Información importante</strong><br><br>
+    • Todas las clases duran 1 hora<br>
+    • Cupos limitados por grupo para garantizar calidad<br>
+    • Cada persona avanza a su ritmo dentro del plan elegido<br>
+    • <strong>No hay reposición de clases ni reembolso de dinero</strong><br><br>
+    🧢 <strong>Gorro de Natación Antares:</strong> $75.000 (pago único, uso obligatorio)
+  </div>
 
 </body>
 </html>
-
