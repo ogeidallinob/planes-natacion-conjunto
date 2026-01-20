@@ -1,195 +1,340 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Planes de Natación | Diego Bonilla</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    body {
-      margin: 0;
+    :root{
+      --bg: #f4f6f8;
+      --text: #111827;
+      --muted: #6b7280;
+
+      --green: #22c55e;
+      --green-soft: #eafff1;
+
+      --blue: #3b82f6;
+      --blue-soft: #eaf2ff;
+
+      --red: #ef4444;
+      --red-soft: #ffecec;
+
+      --orange: #f97316;
+      --orange-soft: #fff3e6;
+    }
+
+    *{ box-sizing: border-box; }
+
+    body{
+      margin:0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #f4f6f8;
-      color: #1f2937;
+      background: radial-gradient(1200px 600px at 50% 0%, #ffffff 0%, var(--bg) 55%, var(--bg) 100%);
+      color: var(--text);
     }
 
-    h1 {
-      text-align: center;
-      margin: 30px 15px 10px;
-      font-size: 2rem;
+    .wrap{
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 18px 44px;
     }
 
-    .subtitle {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 1rem;
-      color: #4b5563;
+    header{
+      text-align:center;
+      margin-bottom: 22px;
     }
 
-    .plans {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      max-width: 1100px;
-      margin: auto;
-      padding: 0 20px 40px;
+    header h1{
+      margin: 10px 0 6px;
+      font-size: 2.25rem;
+      letter-spacing: -0.5px;
     }
 
-    .plan {
-      background: white;
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .flex { border-top: 6px solid #22c55e; }
-    .evolucion { border-top: 6px solid #3b82f6; }
-    .pro { border-top: 6px solid #ef4444; }
-
-    .plan h2 {
+    header p{
       margin: 0;
-      font-size: 1.5rem;
+      color: var(--muted);
+      font-size: 1.05rem;
     }
 
-    .tag {
-      font-size: 0.85rem;
-      font-weight: bold;
-      color: white;
-      display: inline-block;
-      padding: 4px 10px;
+    /* GRID */
+    .plans{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    /* CARD BASE */
+    .plan{
+      background:#fff;
+      border-radius: 18px;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+      overflow:hidden;
+      border: 1px solid rgba(17,24,39,0.06);
+      position: relative;
+    }
+
+    /* TOP COLOR BAR */
+    .bar{
+      height: 10px;
+      width: 100%;
+    }
+
+    .plan .content{
+      padding: 18px 18px 16px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: .9rem;
+      padding: 7px 12px;
       border-radius: 999px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(0,0,0,0.08);
     }
 
-    .tag.flex { background: #22c55e; }
-    .tag.evolucion { background: #3b82f6; }
-    .tag.pro { background: #ef4444; }
+    .title{
+      margin: 0 0 6px;
+      font-size: 1.55rem;
+      letter-spacing: -0.3px;
+    }
 
-    ul {
-      padding-left: 18px;
+    .desc{
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: .98rem;
+      line-height: 1.35;
+    }
+
+    ul{
       margin: 0;
+      padding-left: 18px;
     }
 
-    ul li {
+    ul li{
+      margin: 7px 0;
+      font-size: .98rem;
+    }
+
+    /* PRICE BOX */
+    .price-box{
+      margin-top: 14px;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: .98rem;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .price-box strong{
+      display:block;
       margin-bottom: 6px;
-      font-size: 0.95rem;
+      font-size: 1.02rem;
     }
 
-    .price-box {
-      background: #f9fafb;
-      border-radius: 12px;
-      padding: 14px;
+    .prices{
+      display:flex;
+      flex-direction: column;
+      gap: 6px;
+      font-weight: 700;
+    }
+
+    .prices span{
+      display:flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .prices .label{
+      color: #374151;
+      font-weight: 700;
+    }
+
+    .prices .val{
+      font-weight: 900;
+    }
+
+    /* PLAN THEMES */
+    .flex .bar{ background: linear-gradient(90deg, #16a34a, var(--green)); }
+    .flex .badge{ background: var(--green-soft); color: #166534; }
+    .flex .price-box{ background: var(--green-soft); }
+
+    .evolucion .bar{ background: linear-gradient(90deg, #1d4ed8, var(--blue)); }
+    .evolucion .badge{ background: var(--blue-soft); color: #1e3a8a; }
+    .evolucion .price-box{ background: var(--blue-soft); }
+
+    .pro .bar{ background: linear-gradient(90deg, #b91c1c, var(--red)); }
+    .pro .badge{ background: var(--red-soft); color: #7f1d1d; }
+    .pro .price-box{ background: var(--red-soft); }
+
+    /* IMPORTANT BOX */
+    .important{
+      margin-top: 28px;
+      background: linear-gradient(135deg, var(--orange-soft), #ffffff);
+      border: 1px solid rgba(249,115,22,0.25);
+      border-left: 10px solid var(--orange);
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+
+    .important h3{
+      margin: 0 0 10px;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-size: 1.25rem;
+      letter-spacing: -0.2px;
+      color: #9a3412;
+    }
+
+    .important .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px 16px;
+    }
+
+    .pill{
+      background:#fff;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 14px;
+      padding: 10px 12px;
+      line-height: 1.35;
+      font-size: .98rem;
+    }
+
+    .pill strong{ color: #111827; }
+
+    .warn{
+      border: 1px solid rgba(239,68,68,0.25);
+      background: linear-gradient(135deg, #fff5f5, #ffffff);
+    }
+    .warn strong{ color: #991b1b; }
+
+    /* SMALL FOOT */
+    .footer-note{
       margin-top: 10px;
-      font-size: 0.95rem;
-    }
-
-    .price-box strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 1rem;
-    }
-
-    .important {
-      max-width: 900px;
-      margin: 30px auto;
-      background: #fff7ed;
-      border-left: 6px solid #f97316;
-      padding: 20px;
-      border-radius: 12px;
-      font-size: 0.95rem;
-    }
-
-    .important strong {
-      color: #b45309;
+      color: #6b7280;
+      font-size: .92rem;
+      text-align:center;
     }
   </style>
 </head>
 
 <body>
+  <div class="wrap">
+    <header>
+      <h1>🏊‍♂️ Planes de Natación Diego Bonilla</h1>
+      <p>Clases grupales · Duración 1 hora · Niños, jóvenes y adultos</p>
+    </header>
 
-  <h1>🏊‍♂️ Planes de Natación</h1>
-  <div class="subtitle">
-    Clases grupales · Duración 1 hora · Niños, jóvenes y adultos
+    <section class="plans">
+
+      <!-- PLAN FLEX -->
+      <article class="plan flex">
+        <div class="bar"></div>
+        <div class="content">
+          <div class="badge">🟢 PLAN FLEX</div>
+          <h2 class="title">Empezar con tranquilidad</h2>
+          <p class="desc">Ideal para iniciar o retomar sin presión, con guía clara y acompañamiento presencial.</p>
+
+          <ul>
+            <li>Clases grupales</li>
+            <li>Hasta 6 personas por grupo</li>
+            <li>Acompañamiento presencial del entrenador</li>
+            <li>Clase guiada paso a paso</li>
+            <li>Correcciones generales durante la clase</li>
+            <li>Ritmo de aprendizaje tranquilo</li>
+            <li>Enfoque: seguridad, confianza y técnica base</li>
+          </ul>
+
+          <div class="price-box">
+            <strong>💰 Precios</strong>
+            <div class="prices">
+              <span><span class="label">4 clases / mes</span> <span class="val">$215.000</span></span>
+              <span><span class="label">8 clases / mes</span> <span class="val">$340.000</span></span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PLAN EVOLUCIÓN -->
+      <article class="plan evolucion">
+        <div class="bar"></div>
+        <div class="content">
+          <div class="badge">🔵 ⭐ PLAN EVOLUCIÓN (Recomendado)</div>
+          <h2 class="title">Progreso real sesión a sesión</h2>
+          <p class="desc">Para quienes quieren constancia, técnica más precisa y ver avance medible con seguimiento.</p>
+
+          <ul>
+            <li>Clases grupales semi-reducidas</li>
+            <li>Máx. 3–4 personas por grupo</li>
+            <li>Mayor atención del entrenador</li>
+            <li>Clases planificadas y progresivas</li>
+            <li>Correcciones más detalladas</li>
+            <li>Seguimiento del avance sesión a sesión</li>
+            <li>Enfoque: técnica precisa, continuidad y confianza</li>
+          </ul>
+
+          <div class="price-box">
+            <strong>💰 Precios</strong>
+            <div class="prices">
+              <span><span class="label">4 clases / mes</span> <span class="val">$215.000</span></span>
+              <span><span class="label">8 clases / mes</span> <span class="val">$350.000</span></span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PLAN PRO -->
+      <article class="plan pro">
+        <div class="bar"></div>
+        <div class="content">
+          <div class="badge">🔴 PLAN PRO</div>
+          <h2 class="title">Avanzar más rápido</h2>
+          <p class="desc">Máxima atención y un proceso más personalizado para resultados más rápidos y sólidos.</p>
+
+          <ul>
+            <li>Grupo muy reducido</li>
+            <li>1 a 2 personas por clase</li>
+            <li>Atención prioritaria del entrenador</li>
+            <li>Clases planificadas y personalizadas</li>
+            <li>Correcciones precisas y continuas</li>
+            <li>Progreso controlado permanentemente</li>
+            <li>Enfoque: dominio, confianza y seguridad alta</li>
+          </ul>
+
+          <div class="price-box">
+            <strong>💰 Precios</strong>
+            <div class="prices">
+              <span><span class="label">4 clases / mes</span> <span class="val">$240.000</span></span>
+              <span><span class="label">8 clases / mes</span> <span class="val">$440.000</span></span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- INFO IMPORTANTE -->
+    <section class="important">
+      <h3>📌 Información importante</h3>
+
+      <div class="grid">
+        <div class="pill">⏱️ <strong>Todas las clases duran 1 hora.</strong></div>
+        <div class="pill">👥 <strong>Cupos limitados</strong> por grupo para garantizar calidad.</div>
+        <div class="pill">📈 Cada persona avanza a su ritmo dentro del plan elegido.</div>
+
+        <div class="pill warn">🚫 <strong>No hay reposición de clases ni reembolso de dinero</strong> por inasistencias.</div>
+
+        <div class="pill">🧢 <strong>Gorro de Natación Antares:</strong> $75.000 (pago único, uso obligatorio).</div>
+      </div>
+
+      <div class="footer-note">Si quieres, puedo dejar también una versión “modo Instagram” (más grande y visual) para compartir en carrusel.</div>
+    </section>
+
   </div>
-
-  <section class="plans">
-
-    <!-- PLAN FLEX -->
-    <div class="plan flex">
-      <span class="tag flex">PLAN FLEX</span>
-      <h2>Empezar con tranquilidad</h2>
-      <ul>
-        <li>Clases grupales</li>
-        <li>Hasta 6 personas por grupo</li>
-        <li>Acompañamiento presencial</li>
-        <li>Clase guiada paso a paso</li>
-        <li>Correcciones generales</li>
-        <li>Ritmo de aprendizaje tranquilo</li>
-        <li>Enfoque: seguridad, confianza y técnica base</li>
-      </ul>
-
-      <div class="price-box">
-        <strong>Precios</strong>
-        4 clases / mes: $215.000<br>
-        8 clases / mes: $355.000
-      </div>
-    </div>
-
-    <!-- PLAN EVOLUCIÓN -->
-    <div class="plan evolucion">
-      <span class="tag evolucion">⭐ PLAN EVOLUCIÓN (Recomendado)</span>
-      <h2>Progreso real sesión a sesión</h2>
-      <ul>
-        <li>Clases grupales semi-reducidas</li>
-        <li>Máx. 3–4 personas por grupo</li>
-        <li>Mayor atención del entrenador</li>
-        <li>Clases planificadas y progresivas</li>
-        <li>Correcciones detalladas</li>
-        <li>Seguimiento del avance</li>
-        <li>Enfoque: técnica precisa y continuidad</li>
-      </ul>
-
-      <div class="price-box">
-        <strong>Precios</strong>
-        4 clases / mes: $215.000<br>
-        8 clases / mes: $340.000
-      </div>
-    </div>
-
-    <!-- PLAN PRO -->
-    <div class="plan pro">
-      <span class="tag pro">PLAN PRO</span>
-      <h2>Avanzar más rápido</h2>
-      <ul>
-        <li>Grupo muy reducido</li>
-        <li>1 a 2 personas por clase</li>
-        <li>Atención prioritaria</li>
-        <li>Clases personalizadas</li>
-        <li>Correcciones precisas y continuas</li>
-        <li>Progreso controlado</li>
-        <li>Enfoque: dominio, confianza y seguridad total</li>
-      </ul>
-
-      <div class="price-box">
-        <strong>Precios</strong>
-        4 clases / mes: $240.000<br>
-        8 clases / mes: $440.000
-      </div>
-    </div>
-
-  </section>
-
-  <div class="important">
-    <strong>Información importante</strong><br><br>
-    • Todas las clases duran 1 hora<br>
-    • Cupos limitados por grupo para garantizar calidad<br>
-    • Cada persona avanza a su ritmo dentro del plan elegido<br>
-    • <strong>No hay reposición de clases ni reembolso de dinero</strong><br><br>
-    🧢 <strong>Gorro de Natación Antares:</strong> $75.000 (pago único, uso obligatorio)
-  </div>
-
 </body>
 </html>
