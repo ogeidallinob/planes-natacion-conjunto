@@ -2,342 +2,1390 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Planes de Natación | Diego Bonilla</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clases Grupales de Natación | Diego Bonilla — Antares Performance</title>
+  <meta name="description" content="Clases grupales de natación con método profesional. Niños, jóvenes y adultos. Bogotá.">
+  <meta property="og:title" content="Clases Grupales de Natación · Diego Bonilla">
+  <meta property="og:description" content="Aprende a nadar con propósito. A tu ritmo, a tu edad.">
+  <meta name="theme-color" content="#0a2540">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;0,9..144,900;1,9..144,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #f4f6f8;
-      --text: #111827;
-      --muted: #6b7280;
+      --navy:#0a2540; --navy-deep:#061629; --navy-soft:#1a3a5c;
+      --aqua:#06b6d4; --aqua-bright:#22d3ee;
+      --gold:#f5b841; --gold-deep:#e09e1f;
+      --cream:#f8f5ee; --paper:#ffffff;
+      --ink:#0b1220; --ink-soft:#334155; --muted:#64748b;
+      --line:rgba(10,37,64,0.10);
 
-      --green: #22c55e;
-      --green-soft: #eafff1;
+      --flex:#10b981; --flex-soft:#d1fae5;
+      --evo:#2563eb;  --evo-soft:#dbeafe;
+      --pro:#dc2626;  --pro-soft:#fee2e2;
 
-      --blue: #3b82f6;
-      --blue-soft: #eaf2ff;
+      --orange:#f97316; --orange-soft:#ffedd5;
+      --warn:#dc2626;   --warn-soft:#fef2f2;
 
-      --red: #ef4444;
-      --red-soft: #ffecec;
+      --shadow-sm:0 2px 8px rgba(10,37,64,0.06);
+      --shadow:0 12px 40px rgba(10,37,64,0.10);
+      --shadow-lg:0 24px 70px rgba(10,37,64,0.18);
+      --radius:22px;
 
-      --orange: #f97316;
-      --orange-soft: #fff3e6;
+      --display:'Fraunces', Georgia, serif;
+      --body:'Manrope', system-ui, -apple-system, Segoe UI, sans-serif;
     }
 
-    *{ box-sizing: border-box; }
-
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
-      margin:0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: radial-gradient(1200px 600px at 50% 0%, #ffffff 0%, var(--bg) 55%, var(--bg) 100%);
-      color: var(--text);
+      font-family: var(--body);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img{max-width:100%; display:block}
+    a{color:inherit; text-decoration:none}
+    .wrap{ max-width:1200px; margin:0 auto; padding:0 22px; }
+
+    /* ============= NAV ============= */
+    .nav{
+      position: sticky; top:0; z-index: 50;
+      background: rgba(248,245,238,0.85);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 22px; max-width:1200px; margin:0 auto;
+    }
+    .nav-brand{ display:flex; align-items:center; gap:12px; }
+    .nav-logo{
+      width:44px; height:44px; object-fit:contain;
+      border-radius:12px; background: var(--navy); padding:6px;
+    }
+    .nav-name{
+      font-family: var(--display); font-weight: 800;
+      font-size: 1.05rem; letter-spacing: -0.02em;
+      color: var(--navy); line-height:1;
+    }
+    .nav-name span{
+      display:block; font-family: var(--body); font-weight:600;
+      font-size:0.72rem; color: var(--muted);
+      letter-spacing: 0.1em; text-transform: uppercase; margin-top:4px;
+    }
+    .nav-links{ display:flex; gap:26px; align-items:center; }
+    .nav-links a{
+      font-size:0.9rem; font-weight:600;
+      color: var(--ink-soft); transition: color .2s;
+    }
+    .nav-links a:hover{ color: var(--navy); }
+    .nav-cta{
+      background: var(--navy); color: var(--cream) !important;
+      padding: 10px 18px; border-radius: 999px;
+      font-size: 0.85rem !important; font-weight: 700 !important;
+      transition: transform .2s, background .2s;
+    }
+    .nav-cta:hover{ background: var(--navy-deep); transform: translateY(-1px); }
+    @media(max-width:780px){ .nav-links a:not(.nav-cta){display:none} }
+
+    /* ============= HERO ============= */
+    .hero{
+      position: relative; padding: 80px 0 90px; overflow:hidden;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(6,182,212,0.10) 0%, transparent 50%),
+        radial-gradient(circle at 10% 80%, rgba(245,184,65,0.08) 0%, transparent 45%),
+        var(--cream);
+    }
+    .hero::before{
+      content:''; position:absolute; inset:0;
+      background-image: linear-gradient(90deg, transparent 0%, transparent calc(100% - 1px), rgba(10,37,64,0.04) 100%);
+      background-size: 80px 100%; pointer-events:none;
+    }
+    .hero-inner{
+      position:relative; max-width:1200px; margin:0 auto; padding: 0 22px;
+      display:grid; grid-template-columns: 1.15fr 0.85fr;
+      gap: 60px; align-items:center;
+    }
+    .hero-eyebrow{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:0.78rem; font-weight:700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--navy); background: rgba(10,37,64,0.06);
+      padding: 8px 14px; border-radius: 999px;
+      margin-bottom: 24px; animation: fadeUp .8s .1s both;
+    }
+    .hero-eyebrow::before{
+      content:''; width:6px; height:6px; border-radius:50%;
+      background: var(--aqua); box-shadow: 0 0 12px var(--aqua);
+      animation: pulse 2s infinite;
+    }
+    .hero h1{
+      font-family: var(--display); font-weight: 900;
+      font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+      line-height: 0.98; letter-spacing: -0.035em;
+      color: var(--navy); margin-bottom: 22px;
+      animation: fadeUp .9s .2s both;
+    }
+    .hero h1 em{
+      font-style: italic; font-weight: 800; color: var(--aqua);
+      position:relative; display:inline-block;
+    }
+    .hero h1 em::after{
+      content:''; position:absolute; left:0; right:0; bottom: 4px;
+      height: 8px; background: rgba(6,182,212,0.18);
+      z-index:-1; border-radius: 2px;
+    }
+    .hero p.lead{
+      font-size: 1.12rem; color: var(--ink-soft);
+      max-width: 520px; margin-bottom: 32px;
+      animation: fadeUp 1s .35s both;
+    }
+    .hero-cta{
+      display:flex; gap:14px; flex-wrap:wrap;
+      animation: fadeUp 1s .5s both;
+    }
+    .btn-primary{
+      background: var(--navy); color: var(--cream);
+      padding: 16px 28px; border-radius: 999px;
+      font-weight: 700; font-size: 1rem;
+      border:none; cursor:pointer;
+      display:inline-flex; align-items:center; gap:10px;
+      transition: transform .2s, box-shadow .2s, background .2s;
+      box-shadow: 0 10px 28px rgba(10,37,64,0.25);
+    }
+    .btn-primary:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(10,37,64,0.35);
+      background: var(--navy-deep);
+    }
+    .btn-primary svg{ width:18px; height:18px; }
+    .btn-ghost{
+      background: transparent; color: var(--navy);
+      padding: 16px 24px; border-radius: 999px;
+      font-weight: 700; font-size: 1rem;
+      border: 2px solid var(--navy); cursor:pointer;
+      transition: background .2s, color .2s;
+    }
+    .btn-ghost:hover{ background: var(--navy); color: var(--cream); }
+
+    .hero-card{ position:relative; animation: fadeUp 1.1s .4s both; }
+    .hero-card-inner{
+      position:relative; background: var(--navy); color: var(--cream);
+      border-radius: 28px; padding: 36px 30px;
+      box-shadow: var(--shadow-lg); overflow:hidden;
+    }
+    .hero-card-inner::before{
+      content:''; position:absolute;
+      width:300px; height:300px;
+      background: radial-gradient(circle, var(--aqua) 0%, transparent 70%);
+      opacity: 0.25; top:-100px; right:-100px;
+      border-radius:50%;
+      animation: float 6s ease-in-out infinite;
+    }
+    .hero-card-logo{
+      width: 90px; height: 90px;
+      background: var(--cream); border-radius: 22px;
+      padding: 14px; margin-bottom: 22px;
+      object-fit:contain; position:relative; z-index:1;
+    }
+    .hero-card h3{
+      font-family: var(--display);
+      font-size: 1.6rem; font-weight: 800;
+      letter-spacing: -0.02em; margin-bottom: 6px;
+      position:relative; z-index:1;
+    }
+    .hero-card .role{
+      font-size: 0.9rem; color: rgba(248,245,238,0.7);
+      margin-bottom: 24px; position:relative; z-index:1;
+    }
+    .hero-card .stats{
+      display:grid; grid-template-columns: 1fr 1fr;
+      gap: 14px; position:relative; z-index:1;
+    }
+    .hero-stat{
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 14px; border-radius: 14px;
+    }
+    .hero-stat .num{
+      font-family: var(--display); font-weight: 800;
+      font-size: 1.7rem; color: var(--gold);
+      letter-spacing: -0.02em; line-height:1;
+    }
+    .hero-stat .lbl{
+      font-size: 0.75rem; color: rgba(248,245,238,0.75);
+      margin-top: 6px; letter-spacing: 0.04em;
+    }
+    @media(max-width:900px){
+      .hero{ padding: 50px 0 60px; }
+      .hero-inner{ grid-template-columns: 1fr; gap: 40px; }
+      .hero-card{ max-width: 420px; margin: 0 auto; width:100%; }
     }
 
-    .wrap{
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 28px 18px 44px;
+    /* ============= CREDS BAR ============= */
+    .creds{
+      background: var(--navy); color: var(--cream);
+      padding: 22px 0; overflow:hidden;
+    }
+    .creds-track{
+      display:flex; gap: 50px; align-items:center;
+      animation: scroll 35s linear infinite;
+      width: max-content;
+    }
+    .creds-item{
+      display:flex; align-items:center; gap:12px;
+      font-size: 0.95rem; font-weight:600;
+      white-space: nowrap; color: rgba(248,245,238,0.9);
+    }
+    .creds-item::before{
+      content:''; width:6px; height:6px;
+      background: var(--gold); border-radius:50%;
+    }
+    @keyframes scroll{ to{ transform: translateX(-50%); } }
+
+    /* ============= SECTIONS BASE ============= */
+    section{ padding: 90px 0; }
+    .section-eyebrow{
+      display:inline-block; font-size: 0.78rem;
+      font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--aqua);
+      margin-bottom: 14px;
+    }
+    .section-title{
+      font-family: var(--display); font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -0.03em; line-height: 1.05;
+      color: var(--navy); max-width: 760px; margin-bottom: 18px;
+    }
+    .section-sub{
+      font-size: 1.08rem; color: var(--ink-soft);
+      max-width: 640px; margin-bottom: 50px;
     }
 
-    header{
-      text-align:center;
-      margin-bottom: 22px;
+    /* ============= POR QUÉ ============= */
+    .why{ background: var(--paper); }
+    .why-grid{
+      display:grid; grid-template-columns: repeat(4, 1fr);
+      gap: 22px; margin-top: 20px;
+    }
+    .why-card{
+      background: var(--cream); padding: 30px 26px;
+      border-radius: var(--radius);
+      transition: transform .3s, box-shadow .3s;
+      border: 1px solid var(--line);
+    }
+    .why-card:hover{ transform: translateY(-6px); box-shadow: var(--shadow); }
+    .why-icon{
+      width: 52px; height: 52px; border-radius: 14px;
+      display:grid; place-items:center;
+      background: var(--navy); color: var(--gold);
+      margin-bottom: 20px; font-size: 1.4rem;
+      font-family: var(--display); font-weight: 800;
+    }
+    .why-card h3{
+      font-family: var(--display); font-weight: 800;
+      font-size: 1.25rem; letter-spacing: -0.02em;
+      color: var(--navy); margin-bottom: 10px;
+    }
+    .why-card p{ color: var(--ink-soft); font-size: 0.95rem; }
+    @media(max-width:1000px){ .why-grid{ grid-template-columns: 1fr 1fr; } }
+    @media(max-width:600px){ .why-grid{ grid-template-columns: 1fr; } }
+
+    /* ============= PLANES ============= */
+    .planes{
+      background: linear-gradient(180deg, var(--cream) 0%, #ecebe3 100%);
+      position:relative;
+    }
+    .planes-header{ text-align:center; }
+    .planes-header .section-title{ margin: 0 auto 18px; }
+    .planes-header .section-sub{ margin: 0 auto 50px; }
+
+    .plans-grid{
+      display:grid; grid-template-columns: repeat(3, 1fr);
+      gap: 26px; align-items: stretch;
+    }
+    @media(max-width:1100px){
+      .plans-grid{ grid-template-columns: 1fr; max-width:520px; margin:0 auto; }
     }
 
-    header h1{
-      margin: 10px 0 6px;
-      font-size: 2.25rem;
-      letter-spacing: -0.5px;
-    }
-
-    header p{
-      margin: 0;
-      color: var(--muted);
-      font-size: 1.05rem;
-    }
-
-    /* GRID */
-    .plans{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 22px;
-      margin-top: 22px;
-    }
-
-    /* CARD BASE */
-    .plan{
-      background:#fff;
-      border-radius: 18px;
-      box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+    .card{
+      position:relative; background: var(--paper);
+      border-radius: 26px; box-shadow: var(--shadow);
       overflow:hidden;
-      border: 1px solid rgba(17,24,39,0.06);
-      position: relative;
+      transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .4s;
+      border: 1px solid var(--line);
+      display:flex; flex-direction:column;
+    }
+    .card:hover{ transform: translateY(-10px); box-shadow: var(--shadow-lg); }
+    .flex-plan:hover{ box-shadow: 0 30px 70px rgba(16,185,129,0.28); }
+    .evo-plan:hover{ box-shadow: 0 30px 70px rgba(37,99,235,0.28); }
+    .pro-plan:hover{ box-shadow: 0 30px 70px rgba(220,38,38,0.28); }
+
+    .card.featured{
+      animation: cardBreathe 4s ease-in-out infinite;
+      border: 2px solid var(--navy);
+      box-shadow: 0 30px 70px rgba(10,37,64,0.18);
+    }
+    .card.featured:hover{
+      animation-play-state: paused;
+      transform: scale(1.03) translateY(-10px);
+    }
+    @keyframes cardBreathe {
+      0%, 100% { transform: scale(1.02); }
+      50%      { transform: scale(1.035); }
+    }
+    @media(max-width:1100px){
+      .card.featured{ animation: none; transform: none; }
+      .card.featured:hover{ transform: translateY(-10px); }
     }
 
-    /* TOP COLOR BAR */
-    .bar{
-      height: 10px;
-      width: 100%;
+    .topline{ height: 6px; width: 100%; position: relative; overflow: hidden; }
+    .topline::after{
+      content:''; position:absolute; inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%);
+      transform: translateX(-100%);
+      animation: shimmer 3.5s ease-in-out infinite;
     }
-
-    .plan .content{
-      padding: 18px 18px 16px;
-    }
+    @keyframes shimmer { to { transform: translateX(100%); } }
+    .flex-plan .topline{ background: linear-gradient(90deg, var(--flex), #34d399); }
+    .evo-plan  .topline{ background: linear-gradient(90deg, var(--evo), #60a5fa); }
+    .pro-plan  .topline{ background: linear-gradient(90deg, var(--pro), #f87171); }
 
     .badge{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      font-weight: 800;
-      font-size: .9rem;
-      padding: 7px 12px;
+      position:absolute; top: 18px; right: 18px;
+      font-size: 0.7rem; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--paper); padding: 7px 12px;
       border-radius: 999px;
-      margin-bottom: 12px;
-      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      z-index: 2;
+    }
+    .evo-plan .badge{ background: var(--navy); color: var(--gold); }
+    .pro-plan .badge{ background: var(--gold); color: var(--navy); }
+
+    .card-content{
+      padding: 32px 28px 28px;
+      flex:1; display:flex; flex-direction:column;
+    }
+    .plan-icon{
+      width: 56px; height: 56px; border-radius: 16px;
+      display:grid; place-items:center;
+      font-size: 1.6rem; margin-bottom: 18px;
+      transition: transform .3s;
+    }
+    .card:hover .plan-icon{
+      animation: iconBounce .7s cubic-bezier(.36,.07,.19,.97);
+    }
+    @keyframes iconBounce {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      25%      { transform: scale(1.18) rotate(-6deg); }
+      50%      { transform: scale(1.10) rotate(4deg); }
+      75%      { transform: scale(1.14) rotate(-2deg); }
+    }
+    .flex-plan .plan-icon{ background: var(--flex-soft); }
+    .evo-plan  .plan-icon{ background: var(--evo-soft); }
+    .pro-plan  .plan-icon{ background: var(--pro-soft); }
+
+    .plan-name{
+      font-family: var(--display); font-size: 1.6rem;
+      font-weight: 800; letter-spacing: -0.025em;
+      color: var(--navy); margin-bottom: 4px;
+    }
+    .plan-focus{
+      color: var(--muted); font-weight: 600;
+      font-size: 0.92rem; margin-bottom: 14px;
+    }
+    .plan-desc{
+      color: var(--ink-soft); font-size: 0.93rem;
+      margin-bottom: 18px; line-height: 1.5;
     }
 
-    .title{
-      margin: 0 0 6px;
-      font-size: 1.55rem;
-      letter-spacing: -0.3px;
+    .features{ list-style:none; margin-bottom: 8px; }
+    .features li{
+      display:flex; gap:10px; padding: 8px 0;
+      font-size: 0.9rem; color: var(--ink);
+      line-height:1.4;
+    }
+    .features li strong{ font-weight: 700; color: var(--navy); }
+    .chk{
+      width: 20px; height: 20px; border-radius: 50%;
+      display:grid; place-items:center; flex-shrink:0;
+      margin-top: 2px; font-size: 0.7rem; font-weight: 800;
+    }
+    .flex-plan .chk{ background: var(--flex-soft); color: var(--flex); }
+    .evo-plan  .chk{ background: var(--evo-soft); color: var(--evo); }
+    .pro-plan  .chk{ background: var(--pro-soft); color: var(--pro); }
+
+    /* ============= PAQUETES DOBLES ============= */
+    .packages{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    @media(max-width:420px){
+      .packages{ grid-template-columns: 1fr; }
     }
 
-    .desc{
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: .98rem;
-      line-height: 1.35;
-    }
-
-    ul{
-      margin: 0;
-      padding-left: 18px;
-    }
-
-    ul li{
-      margin: 7px 0;
-      font-size: .98rem;
-    }
-
-    /* PRICE BOX */
-    .price-box{
-      margin-top: 14px;
-      border-radius: 14px;
-      padding: 12px 14px;
-      font-size: .98rem;
-      border: 1px solid rgba(0,0,0,0.06);
-    }
-
-    .price-box strong{
-      display:block;
-      margin-bottom: 6px;
-      font-size: 1.02rem;
-    }
-
-    .prices{
-      display:flex;
+    .package{
+      position: relative;
+      background: var(--cream);
+      border: 1.5px solid var(--line);
+      border-radius: 16px;
+      padding: 18px 14px 16px;
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+      display: flex;
       flex-direction: column;
-      gap: 6px;
+    }
+    .package:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(10,37,64,0.10);
+    }
+
+    .pkg-head{
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .pkg-clases{ color: var(--navy); }
+
+    .pkg-price{
+      display: flex;
+      align-items: baseline;
+      gap: 3px;
+      margin-bottom: 4px;
+    }
+    .pkg-price .cur{
+      font-size: 0.85rem;
       font-weight: 700;
+      color: var(--ink-soft);
+      align-self: flex-start;
+      margin-top: 5px;
     }
-
-    .prices span{
-      display:flex;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .prices .label{
-      color: #374151;
-      font-weight: 700;
-    }
-
-    .prices .val{
+    .pkg-price .val{
+      font-family: var(--display);
+      font-size: 1.65rem;
       font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+      line-height: 1;
     }
 
-    /* PLAN THEMES */
-    .flex .bar{ background: linear-gradient(90deg, #16a34a, var(--green)); }
-    .flex .badge{ background: var(--green-soft); color: #166534; }
-    .flex .price-box{ background: var(--green-soft); }
+    .pkg-perclass{
+      font-size: 0.74rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .pkg-perclass strong{ color: var(--navy); font-weight: 800; }
 
-    .evolucion .bar{ background: linear-gradient(90deg, #1d4ed8, var(--blue)); }
-    .evolucion .badge{ background: var(--blue-soft); color: #1e3a8a; }
-    .evolucion .price-box{ background: var(--blue-soft); }
+    .btn-pkg{
+      width: 100%;
+      background: var(--paper);
+      color: var(--navy);
+      border: 2px solid var(--navy);
+      border-radius: 10px;
+      padding: 10px 8px;
+      font-family: var(--body);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .25s, color .25s, transform .2s, border-color .25s;
+      position: relative;
+      overflow: hidden;
+      margin-top: auto;
+    }
+    .btn-pkg::before{
+      content:''; position:absolute; top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.35) 50%, transparent 100%);
+      transition: left .65s ease;
+      pointer-events: none;
+    }
+    .btn-pkg:hover{
+      background: var(--navy);
+      color: var(--paper);
+      transform: translateY(-1px);
+    }
+    .btn-pkg:hover::before{ left: 100%; }
 
-    .pro .bar{ background: linear-gradient(90deg, #b91c1c, var(--red)); }
-    .pro .badge{ background: var(--red-soft); color: #7f1d1d; }
-    .pro .price-box{ background: var(--red-soft); }
+    /* Tematización por plan */
+    .flex-plan .package{ border-color: rgba(16,185,129,0.22); }
+    .flex-plan .package:hover{ border-color: var(--flex); }
+    .flex-plan .btn-pkg{ border-color: var(--flex); color: var(--flex); }
+    .flex-plan .btn-pkg:hover{ background: var(--flex); color: var(--paper); }
 
-    /* IMPORTANT BOX */
-    .important{
-      margin-top: 28px;
-      background: linear-gradient(135deg, var(--orange-soft), #ffffff);
-      border: 1px solid rgba(249,115,22,0.25);
+    .evo-plan .package{ border-color: rgba(37,99,235,0.22); }
+    .evo-plan .package:hover{ border-color: var(--evo); }
+    .evo-plan .btn-pkg{ border-color: var(--evo); color: var(--evo); }
+    .evo-plan .btn-pkg:hover{ background: var(--evo); color: var(--paper); }
+
+    .pro-plan .package{ border-color: rgba(220,38,38,0.22); }
+    .pro-plan .package:hover{ border-color: var(--pro); }
+    .pro-plan .btn-pkg{ border-color: var(--pro); color: var(--pro); }
+    .pro-plan .btn-pkg:hover{ background: var(--pro); color: var(--paper); }
+
+    /* PAQUETE DESTACADO (8 clases) */
+    .pkg-best{
+      background: linear-gradient(135deg, #fef3c7 0%, #fffaeb 100%);
+      border-color: var(--gold) !important;
+      box-shadow: 0 8px 22px rgba(245,184,65,0.22);
+      animation: pkgBest 3.5s ease-in-out infinite;
+      transform-origin: center;
+      padding-top: 22px;
+    }
+    @keyframes pkgBest {
+      0%, 100% {
+        transform: scale(1) translateY(0);
+        box-shadow: 0 8px 22px rgba(245,184,65,0.25);
+      }
+      50% {
+        transform: scale(1.025);
+        box-shadow: 0 14px 34px rgba(245,184,65,0.45);
+      }
+    }
+    .pkg-best:hover{ animation-play-state: paused; transform: translateY(-4px) scale(1.02); }
+
+    .pkg-best .pkg-clases{ color: var(--navy); }
+    .pkg-best .pkg-price .val{ color: var(--navy); }
+    .pkg-best .btn-pkg{
+      background: var(--navy) !important;
+      color: var(--paper) !important;
+      border-color: var(--navy) !important;
+    }
+    .pkg-best .btn-pkg:hover{
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+      border-color: var(--gold) !important;
+    }
+
+    /* Badge flotante de ahorro */
+    .pkg-badge{
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+      color: var(--navy);
+      font-size: 0.68rem;
+      font-weight: 900;
+      padding: 5px 11px;
+      border-radius: 999px;
+      white-space: nowrap;
+      box-shadow: 0 6px 16px rgba(245,184,65,0.55);
+      letter-spacing: 0.04em;
+      z-index: 1;
+    }
+
+    /* Stagger reveal */
+    .plans-grid > .reveal:nth-child(1){ transition-delay: .05s; }
+    .plans-grid > .reveal:nth-child(2){ transition-delay: .20s; }
+    .plans-grid > .reveal:nth-child(3){ transition-delay: .35s; }
+
+    /* ============= INFORMACIÓN IMPORTANTE ============= */
+    .info-important{ background: var(--paper); }
+    .info-box{
+      background: linear-gradient(135deg, var(--orange-soft) 0%, #fff 100%);
+      border: 1px solid rgba(249,115,22,0.20);
       border-left: 10px solid var(--orange);
-      border-radius: 18px;
-      padding: 18px 18px 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+      border-radius: 22px;
+      padding: 36px 36px 32px;
+      box-shadow: var(--shadow);
     }
-
-    .important h3{
-      margin: 0 0 10px;
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      font-size: 1.25rem;
-      letter-spacing: -0.2px;
+    .info-header{ display:flex; align-items:center; gap: 14px; margin-bottom: 24px; }
+    .info-icon{
+      width: 56px; height: 56px;
+      background: var(--orange); color: var(--paper);
+      border-radius: 14px;
+      display:grid; place-items:center;
+      font-size: 1.6rem;
+      box-shadow: 0 8px 20px rgba(249,115,22,0.35);
+    }
+    .info-header h3{
+      font-family: var(--display); font-weight: 800;
+      font-size: 1.7rem; letter-spacing: -0.02em;
       color: #9a3412;
     }
-
-    .important .grid{
+    .info-grid{
       display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 10px 16px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
     }
-
     .pill{
-      background:#fff;
-      border: 1px solid rgba(0,0,0,0.06);
+      background: var(--paper);
+      border: 1px solid var(--line);
       border-radius: 14px;
-      padding: 10px 12px;
-      line-height: 1.35;
-      font-size: .98rem;
+      padding: 16px 18px;
+      font-size: 0.96rem; line-height: 1.4;
+      transition: transform .25s, box-shadow .25s;
+      display:flex; gap: 12px; align-items: flex-start;
+    }
+    .pill:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 12px 26px rgba(10,37,64,0.08);
+    }
+    .pill .pill-icon{ font-size: 1.3rem; flex-shrink: 0; line-height: 1.2; }
+    .pill strong{ color: var(--navy); }
+    .pill.warn{
+      background: linear-gradient(135deg, var(--warn-soft) 0%, #fff 100%);
+      border-color: rgba(220,38,38,0.25);
+    }
+    .pill.warn strong{ color: #991b1b; }
+    .pill.cap{
+      background: linear-gradient(135deg, #eff6ff 0%, #fff 100%);
+      border-color: rgba(37,99,235,0.20);
+    }
+    .pill.cap strong{ color: #1e3a8a; }
+
+    /* ============= PROCESO ============= */
+    .proceso{ background: var(--cream); }
+    .steps{
+      display:grid; grid-template-columns: repeat(4, 1fr);
+      gap: 24px; margin-top: 30px; position:relative;
+    }
+    .step{ position:relative; padding-top: 30px; }
+    .step-num{
+      font-family: var(--display); font-style: italic;
+      font-weight: 800; font-size: 4rem;
+      color: var(--aqua); opacity: 0.25;
+      line-height:1; letter-spacing: -0.04em;
+      position:absolute; top: -20px; left: -10px;
+    }
+    .step h4{
+      font-family: var(--display); font-weight: 800;
+      font-size: 1.2rem; letter-spacing: -0.02em;
+      color: var(--navy); margin-bottom: 8px;
+      position:relative; z-index:1;
+    }
+    .step p{ font-size: 0.93rem; color: var(--ink-soft); }
+    @media(max-width:900px){ .steps{ grid-template-columns: 1fr 1fr; gap: 36px; } }
+    @media(max-width:540px){ .steps{ grid-template-columns: 1fr; } }
+
+    /* ============= TESTIMONIOS ============= */
+    .testi{ background: var(--paper); }
+    .testi-grid{
+      display:grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; margin-top: 30px;
+    }
+    .testi-card{
+      background: var(--cream); padding: 30px 28px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--line); position:relative;
+    }
+    .testi-card::before{
+      content:'\201C';
+      font-family: var(--display); font-style: italic;
+      font-size: 5rem; font-weight: 900;
+      color: var(--aqua); position:absolute;
+      top: -10px; left: 18px; line-height:1; opacity: 0.25;
+    }
+    .testi-card .quote{
+      font-family: var(--display); font-style: italic;
+      font-size: 1.05rem; color: var(--navy);
+      line-height: 1.45; margin-bottom: 22px;
+      position:relative; z-index:1;
+    }
+    .testi-author{ display:flex; align-items:center; gap:12px; }
+    .author-avatar{
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--navy); color: var(--gold);
+      display:grid; place-items:center;
+      font-family: var(--display); font-weight: 800;
+      font-size: 1.05rem;
+    }
+    .author-name{ font-weight: 700; color: var(--navy); font-size: 0.95rem; }
+    .author-role{ font-size: 0.82rem; color: var(--muted); }
+    @media(max-width:900px){ .testi-grid{ grid-template-columns: 1fr; } }
+
+    /* ============= FAQ ============= */
+    .faq{ background: var(--cream); }
+    .faq-list{ max-width: 800px; margin: 30px auto 0; }
+    .faq-item{
+      border-bottom: 1px solid var(--line);
+      padding: 22px 0; cursor: pointer;
+      transition: padding .25s;
+    }
+    .faq-q{
+      display:flex; justify-content:space-between; align-items:center;
+      gap: 18px; font-family: var(--display);
+      font-weight: 700; font-size: 1.15rem;
+      color: var(--navy); letter-spacing: -0.01em;
+    }
+    .faq-toggle{
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--paper);
+      display:grid; place-items:center;
+      font-weight: 800; color: var(--navy);
+      font-size: 1.2rem; flex-shrink:0;
+      transition: transform .25s, background .25s;
+    }
+    .faq-item.open .faq-toggle{
+      transform: rotate(45deg);
+      background: var(--navy); color: var(--gold);
+    }
+    .faq-a{
+      max-height: 0; overflow: hidden;
+      transition: max-height .35s ease, margin-top .25s;
+      color: var(--ink-soft); font-size: 1rem;
+    }
+    .faq-item.open .faq-a{ max-height: 600px; margin-top: 14px; }
+
+    /* ============= CTA FINAL ============= */
+    .cta-final{
+      background: var(--navy); color: var(--cream);
+      position:relative; overflow:hidden; text-align:center;
+    }
+    .cta-final::before{
+      content:''; position:absolute; inset:0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(6,182,212,0.18) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(245,184,65,0.14) 0%, transparent 40%);
+    }
+    .cta-final-inner{ position:relative; z-index:1; max-width: 720px; margin: 0 auto; padding: 0 22px; }
+    .cta-final h2{
+      font-family: var(--display); font-weight: 900;
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      letter-spacing: -0.03em; line-height: 1.05;
+      margin-bottom: 18px;
+    }
+    .cta-final h2 em{ font-style:italic; color: var(--gold); }
+    .cta-final p{
+      font-size: 1.1rem; color: rgba(248,245,238,0.8);
+      margin-bottom: 32px;
+    }
+    .btn-cta-final{
+      background: var(--gold); color: var(--navy);
+      padding: 18px 36px; border-radius: 999px;
+      font-weight: 800; font-size: 1.1rem;
+      border: none; cursor: pointer;
+      display:inline-flex; align-items:center; gap:12px;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 14px 36px rgba(245,184,65,0.4);
+      font-family: var(--body);
+    }
+    .btn-cta-final:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 18px 44px rgba(245,184,65,0.55);
     }
 
-    .pill strong{ color: #111827; }
-
-    .warn{
-      border: 1px solid rgba(239,68,68,0.25);
-      background: linear-gradient(135deg, #fff5f5, #ffffff);
+    /* ============= FOOTER ============= */
+    footer{
+      background: var(--navy-deep);
+      color: rgba(248,245,238,0.7);
+      padding: 50px 0 30px; text-align:center;
+      font-size: 0.9rem;
     }
-    .warn strong{ color: #991b1b; }
-
-    /* SMALL FOOT */
-    .footer-note{
-      margin-top: 10px;
-      color: #6b7280;
-      font-size: .92rem;
-      text-align:center;
+    footer .foot-brand{
+      font-family: var(--display); font-weight: 800;
+      color: var(--cream); font-size: 1.2rem;
+      margin-bottom: 8px; letter-spacing: -0.02em;
     }
+    footer a{ color: var(--aqua-bright); font-weight: 600; }
+    footer a:hover{ text-decoration: underline; }
+    .foot-divider{
+      width: 50px; height: 2px;
+      background: var(--gold); margin: 24px auto;
+    }
+
+    /* ============= FLOATING WHATSAPP ============= */
+    .wa-float{
+      position: fixed; bottom: 24px; right: 24px;
+      width: 60px; height: 60px;
+      background: #25d366; border-radius: 50%;
+      display:grid; place-items:center;
+      box-shadow: 0 14px 36px rgba(37,211,102,0.45);
+      cursor:pointer; z-index: 100;
+      transition: transform .25s, box-shadow .25s;
+      animation: floatPulse 2.5s ease-in-out infinite;
+    }
+    .wa-float:hover{ transform: scale(1.1); }
+    .wa-float svg{ width: 32px; height: 32px; fill: white; }
+    .wa-tooltip{
+      position: absolute; right: 70px; top: 50%;
+      transform: translateY(-50%);
+      background: var(--navy); color: var(--cream);
+      padding: 10px 14px; border-radius: 10px;
+      font-size: 0.85rem; font-weight: 600;
+      white-space: nowrap; opacity: 0;
+      pointer-events: none; transition: opacity .25s;
+    }
+    .wa-float:hover .wa-tooltip{ opacity:1; }
+    .wa-tooltip::after{
+      content:''; position:absolute;
+      right: -6px; top:50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-left-color: var(--navy);
+    }
+
+    /* ============= ANIMATIONS ============= */
+    @keyframes fadeUp{
+      from{ opacity:0; transform: translateY(20px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+    @keyframes pulse{
+      0%, 100%{ box-shadow: 0 0 0 0 var(--aqua); }
+      50%{ box-shadow: 0 0 0 6px rgba(6,182,212,0); }
+    }
+    @keyframes float{
+      0%, 100%{ transform: translate(0,0); }
+      50%{ transform: translate(-10px, -10px); }
+    }
+    @keyframes floatPulse{
+      0%, 100%{ box-shadow: 0 14px 36px rgba(37,211,102,0.45); }
+      50%{ box-shadow: 0 14px 50px rgba(37,211,102,0.75); }
+    }
+
+    .reveal{ opacity:0; transform: translateY(30px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.visible{ opacity:1; transform: translateY(0); }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header>
-      <h1>🏊‍♂️ Planes de Natación</h1>
-      <p>Clases grupales · Duración 1 hora · Niños, jóvenes y adultos</p>
-      <p>clases dirigidas por Diego Bonilla, entrenador y profesor de natación, con experiencia en 
-        alto rendimiento y en procesos formativos adaptados a cada edad y nivel<p>
-    </header>
 
-    <section class="plans">
-
-      <!-- PLAN FLEX -->
-      <article class="plan flex">
-        <div class="bar"></div>
-        <div class="content">
-          <div class="badge">🟢 PLAN FLEX</div>
-          <h2 class="title">Empezar con tranquilidad</h2>
-          <p class="desc">Ideal para iniciar o retomar sin presión, con guía clara y acompañamiento presencial.</p>
-
-          <ul>
-            <li>Clases grupales</li>
-            <li>Hasta 6 personas por grupo</li>
-            <li>Acompañamiento presencial del entrenador</li>
-            <li>Clase guiada paso a paso</li>
-            <li>Correcciones generales durante la clase</li>
-            <li>Ritmo de aprendizaje tranquilo</li>
-            <li>Enfoque: seguridad, confianza y técnica base</li>
-          </ul>
-
-          <div class="price-box">
-            <strong>💰 Precios</strong>
-            <div class="prices">
-              <span><span class="label">4 clases / mes</span> <span class="val">$215.000</span></span>
-              <span><span class="label">8 clases / mes</span> <span class="val">$340.000</span></span>
-            </div>
-          </div>
+  <!-- ============= NAV ============= -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img class="nav-logo" src="logo.png" alt="Logo" onerror="this.style.display='none'">
+        <div class="nav-name">
+          Diego Bonilla
+          <span>Head Coach · Antares Performance</span>
         </div>
-      </article>
+      </div>
+      <div class="nav-links">
+        <a href="#planes">Planes</a>
+        <a href="#importante">Información</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#" class="nav-cta" onclick="contactarWhatsApp('CONSULTA-GENERAL'); return false;">Escríbeme</a>
+      </div>
+    </div>
+  </nav>
 
-      <!-- PLAN EVOLUCIÓN -->
-      <article class="plan evolucion">
-        <div class="bar"></div>
-        <div class="content">
-          <div class="badge">🔵 ⭐ PLAN EVOLUCIÓN (Recomendado)</div>
-          <h2 class="title">Progreso real sesión a sesión</h2>
-          <p class="desc">Para quienes quieren constancia, técnica más precisa y ver avance medible con seguimiento.</p>
-
-          <ul>
-            <li>Clases grupales semi-reducidas</li>
-            <li>Máx. 3–4 personas por grupo</li>
-            <li>Mayor atención del entrenador</li>
-            <li>Clases planificadas y progresivas</li>
-            <li>Correcciones más detalladas</li>
-            <li>Seguimiento del avance sesión a sesión</li>
-            <li>Enfoque: técnica precisa, continuidad y confianza</li>
-          </ul>
-
-          <div class="price-box">
-            <strong>💰 Precios</strong>
-            <div class="prices">
-              <span><span class="label">4 clases / mes</span> <span class="val">$215.000</span></span>
-              <span><span class="label">8 clases / mes</span> <span class="val">$350.000</span></span>
-            </div>
-          </div>
+  <!-- ============= HERO ============= -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow">Clases Grupales · Bogotá</div>
+        <h1>Aprende a <em>nadar</em>. A tu ritmo, a tu edad.</h1>
+        <p class="lead">
+          Clases grupales con método profesional para <strong>niños, jóvenes y adultos</strong>. Cupos limitados, atención real y un proceso que respeta el ritmo de cada persona.
+        </p>
+        <div class="hero-cta">
+          <button class="btn-primary" onclick="document.getElementById('planes').scrollIntoView({behavior:'smooth'})">
+            Ver planes
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+          <button class="btn-ghost" onclick="contactarWhatsApp('CONSULTA-GENERAL')">Pregúntame qué plan elegir</button>
         </div>
-      </article>
-
-      <!-- PLAN PRO -->
-      <article class="plan pro">
-        <div class="bar"></div>
-        <div class="content">
-          <div class="badge">🔴 PLAN PRO</div>
-          <h2 class="title">Avanzar más rápido</h2>
-          <p class="desc">Máxima atención y un proceso más personalizado para resultados más rápidos y sólidos.</p>
-
-          <ul>
-            <li>Grupo muy reducido</li>
-            <li>1 a 2 personas por clase</li>
-            <li>Atención prioritaria del entrenador</li>
-            <li>Clases planificadas y personalizadas</li>
-            <li>Correcciones precisas y continuas</li>
-            <li>Progreso controlado permanentemente</li>
-            <li>Enfoque: dominio, confianza y seguridad alta</li>
-          </ul>
-
-          <div class="price-box">
-            <strong>💰 Precios</strong>
-            <div class="prices">
-              <span><span class="label">4 clases / mes</span> <span class="val">$240.000</span></span>
-              <span><span class="label">8 clases / mes</span> <span class="val">$440.000</span></span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-    </section>
-
-    <!-- INFO IMPORTANTE -->
-    <section class="important">
-      <h3>📌 Información importante</h3>
-
-      <div class="grid">
-        <div class="pill">⏱️ <strong>Todas las clases duran 1 hora.</strong></div>
-        <div class="pill">👥 <strong>Cupos limitados</strong> por grupo para garantizar calidad.</div>
-        <div class="pill">📈 Cada persona avanza a su ritmo dentro del plan elegido.</div>
-
-        <div class="pill warn">🚫 <strong>No hay reposición de clases ni reembolso de dinero</strong> por inasistencias.</div>
-
-        <div class="pill">🧢 <strong>Gorro de Natación Antares:</strong> $75.000 (pago único, uso obligatorio).</div>
       </div>
 
-      <div class="footer-note">¿No sabes qué plan elegir? Escríbeme y te ayudo a escoger el plan ideal según tu nivel y objetivo.</div>
-    </section>
+      <aside class="hero-card">
+        <div class="hero-card-inner">
+          <img class="hero-card-logo" src="logo.png" alt="Antares Performance Team" onerror="this.style.display='none'">
+          <h3>Head Coach Diego Bonilla</h3>
+          <div class="role">Entrenador y profesor de natación</div>
+          <div class="stats">
+            <div class="hero-stat">
+              <div class="num">7×</div>
+              <div class="lbl">Juegos Nacionales</div>
+            </div>
+            <div class="hero-stat">
+              <div class="num">20+</div>
+              <div class="lbl">Años enseñando</div>
+            </div>
+            <div class="hero-stat">
+              <div class="num">1h</div>
+              <div class="lbl">Cada clase</div>
+            </div>
+            <div class="hero-stat">
+              <div class="num">6</div>
+              <div class="lbl">Máx por grupo</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
 
+  <!-- ============= CREDS BAR ============= -->
+  <div class="creds">
+    <div class="creds-track">
+      <div class="creds-item">Ex-selección Colombia y Bogotá</div>
+      <div class="creds-item">7 Juegos Nacionales</div>
+      <div class="creds-item">Head Coach Selección Bogotá IDRD</div>
+      <div class="creds-item">Coach Selección Colombia</div>
+      <div class="creds-item">Antares Performance Team</div>
+      <div class="creds-item">Niños · Jóvenes · Adultos</div>
+      <div class="creds-item">Ex-selección Colombia y Bogotá</div>
+      <div class="creds-item">7 Juegos Nacionales</div>
+      <div class="creds-item">Head Coach Selección Bogotá IDRD</div>
+      <div class="creds-item">Coach Selección Colombia</div>
+      <div class="creds-item">Antares Performance Team</div>
+      <div class="creds-item">Niños · Jóvenes · Adultos</div>
+    </div>
   </div>
+
+  <!-- ============= POR QUÉ ============= -->
+  <section class="why">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="section-eyebrow">Por qué entrenar conmigo</div>
+        <h2 class="section-title">Grupos pequeños. Atención real. Resultados verdaderos.</h2>
+        <p class="section-sub">No es solo "ir a nadar". Es un proceso pensado para que cada persona avance, sin importar su edad o su punto de partida.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon">01</div>
+          <h3>Cupos limitados</h3>
+          <p>Máximo 6 personas por grupo. Cada uno recibe correcciones reales — nadie se pierde entre la multitud.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">02</div>
+          <h3>Método con propósito</h3>
+          <p>Clases planificadas y progresivas. Cada semana tiene un objetivo claro, no improvisamos en la orilla.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">03</div>
+          <h3>Para toda la familia</h3>
+          <p>Niños, jóvenes y adultos. Desde quien le tiene respeto al agua hasta quien ya quiere competir.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">04</div>
+          <h3>Eres parte del equipo</h3>
+          <p>Antares es una comunidad. Los compañeros de grupo se convierten en amigos, y la natación deja de ser solitaria.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= PLANES ============= -->
+  <section class="planes" id="planes">
+    <div class="wrap">
+      <div class="planes-header reveal">
+        <div class="section-eyebrow">Elige tu camino</div>
+        <h2 class="section-title">Tres planes. Dos paquetes. Tú decides.</h2>
+        <p class="section-sub">Cada plan ofrece <strong>4 u 8 clases al mes</strong>. El paquete de 8 clases siempre tiene mejor precio por clase y un ahorro real.</p>
+      </div>
+
+      <div class="plans-grid">
+
+        <!-- PLAN FLEX -->
+        <article class="card flex-plan reveal">
+          <div class="topline"></div>
+          <div class="card-content">
+            <div class="plan-icon">🌱</div>
+            <div class="plan-name">Plan FLEX</div>
+            <div class="plan-focus">Empezar con tranquilidad</div>
+            <p class="plan-desc">Ideal para iniciar o retomar sin presión, con guía clara y acompañamiento presencial.</p>
+
+            <ul class="features">
+              <li><span class="chk">✓</span><span><strong>Hasta 6 personas</strong> por grupo</span></li>
+              <li><span class="chk">✓</span><span>Clase guiada paso a paso</span></li>
+              <li><span class="chk">✓</span><span>Correcciones generales durante la clase</span></li>
+              <li><span class="chk">✓</span><span>Ritmo tranquilo · técnica base</span></li>
+            </ul>
+
+            <div class="packages">
+              <div class="package">
+                <div class="pkg-head"><span class="pkg-clases">4 clases</span> / mes</div>
+                <div class="pkg-price">
+                  <span class="cur">$</span>
+                  <span class="val">215.000</span>
+                </div>
+                <div class="pkg-perclass"><strong>$53.750</strong> / clase</div>
+                <button class="btn-pkg" onclick="contactarWhatsApp('FLEX','4')">Lo quiero</button>
+              </div>
+
+              <div class="package pkg-best">
+                <div class="pkg-badge">💰 Ahorras $90.000</div>
+                <div class="pkg-head"><span class="pkg-clases">8 clases</span> / mes</div>
+                <div class="pkg-price">
+                  <span class="cur">$</span>
+                  <span class="val">340.000</span>
+                </div>
+                <div class="pkg-perclass"><strong>$42.500</strong> / clase</div>
+                <button class="btn-pkg" onclick="contactarWhatsApp('FLEX','8')">Lo quiero</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- PLAN EVOLUCIÓN -->
+        <article class="card evo-plan featured reveal">
+          <div class="topline"></div>
+          <div class="badge">★ Recomendado</div>
+          <div class="card-content">
+            <div class="plan-icon">📈</div>
+            <div class="plan-name">Plan EVOLUCIÓN</div>
+            <div class="plan-focus">Progreso real, sesión a sesión</div>
+            <p class="plan-desc">Para quienes quieren constancia, técnica más precisa y ver avance medible con seguimiento.</p>
+
+            <ul class="features">
+              <li><span class="chk">✓</span><span><strong>Máx. 3 a 4 personas</strong> por grupo</span></li>
+              <li><span class="chk">✓</span><span>Mayor atención del entrenador</span></li>
+              <li><span class="chk">✓</span><span>Clases planificadas y progresivas</span></li>
+              <li><span class="chk">✓</span><span>Seguimiento sesión a sesión</span></li>
+            </ul>
+
+            <div class="packages">
+              <div class="package">
+                <div class="pkg-head"><span class="pkg-clases">4 clases</span> / mes</div>
+                <div class="pkg-price">
+                  <span class="cur">$</span>
+                  <span class="val">215.000</span>
+                </div>
+                <div class="pkg-perclass"><strong>$53.750</strong> / clase</div>
+                <button class="btn-pkg" onclick="contactarWhatsApp('EVOLUCIÓN','4')">Lo quiero</button>
+              </div>
+
+              <div class="package pkg-best">
+                <div class="pkg-badge">💰 Ahorras $80.000</div>
+                <div class="pkg-head"><span class="pkg-clases">8 clases</span> / mes</div>
+                <div class="pkg-price">
+                  <span class="cur">$</span>
+                  <span class="val">350.000</span>
+                </div>
+                <div class="pkg-perclass"><strong>$43.750</strong> / clase</div>
+                <button class="btn-pkg" onclick="contactarWhatsApp('EVOLUCIÓN','8')">Lo quiero</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- PLAN PRO -->
+        <article class="card pro-plan reveal">
+          <div class="topline"></div>
+          <div class="badge">Avance rápido</div>
+          <div class="card-content">
+            <div class="plan-icon">🏆</div>
+            <div class="plan-name">Plan PRO</div>
+            <div class="plan-focus">Avanzar más rápido</div>
+            <p class="plan-desc">Máxima atención y un proceso más personalizado, para resultados sólidos y rápidos.</p>
+
+            <ul class="features">
+              <li><span class="chk">✓</span><span><strong>1 a 2 personas</strong> por clase</span></li>
+              <li><span class="chk">✓</span><span>Atención prioritaria del entrenador</span></li>
+              <li><span class="chk">✓</span><span>Clases planificadas y personalizadas</span></li>
+              <li><span class="chk">✓</span><span>Correcciones precisas y continuas</span></li>
+            </ul>
+
+            <div class="packages">
+              <div class="package">
+                <div class="pkg-head"><span class="pkg-clases">4 clases</span> / mes</div>
+                <div class="pkg-price">
+                  <span class="cur">$</span>
+                  <span class="val">240.000</span>
+                </div>
+                <div class="pkg-perclass"><strong>$60.000</strong> / clase</div>
+                <button class="btn-pkg" onclick="contactarWhatsApp('PRO','4')">Lo quiero</button>
+              </div>
+
+              <div class="package pkg-best">
+                <div class="pkg-badge">💰 Ahorras $40.000</div>
+                <div class="pkg-head"><span class="pkg-clases">8 clases</span> / mes</div>
+                <div class="pkg-price">
+                  <span class="cur">$</span>
+                  <span class="val">440.000</span>
+                </div>
+                <div class="pkg-perclass"><strong>$55.000</strong> / clase</div>
+                <button class="btn-pkg" onclick="contactarWhatsApp('PRO','8')">Lo quiero</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= INFORMACIÓN IMPORTANTE ============= -->
+  <section class="info-important" id="importante">
+    <div class="wrap">
+      <div class="info-box reveal">
+        <div class="info-header">
+          <div class="info-icon">📌</div>
+          <h3>Información importante</h3>
+        </div>
+
+        <div class="info-grid">
+          <div class="pill">
+            <div class="pill-icon">⏱️</div>
+            <div><strong>Cada clase dura 1 hora.</strong> Tiempo real en el agua, no incluye cambio.</div>
+          </div>
+
+          <div class="pill cap">
+            <div class="pill-icon">👥</div>
+            <div><strong>Cupos limitados</strong> en cada grupo para garantizar calidad y atención individual.</div>
+          </div>
+
+          <div class="pill">
+            <div class="pill-icon">📈</div>
+            <div>Cada persona <strong>avanza a su ritmo</strong> dentro del plan que elija.</div>
+          </div>
+
+          <div class="pill warn">
+            <div class="pill-icon">🚫</div>
+            <div><strong>No hay reposición de clases ni reembolso de dinero</strong> por inasistencias.</div>
+          </div>
+
+          <div class="pill">
+            <div class="pill-icon">🧢</div>
+            <div><strong>Gorro de Natación Antares:</strong> $75.000 (pago único, uso obligatorio).</div>
+          </div>
+
+          <div class="pill cap">
+            <div class="pill-icon">📅</div>
+            <div>Los planes inician el <strong>día 1 o el día 15</strong> de cada mes.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= PROCESO ============= -->
+  <section class="proceso">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="section-eyebrow">Cómo empezar</div>
+        <h2 class="section-title">Tu camino, en 4 pasos.</h2>
+        <p class="section-sub">Desde el primer mensaje hasta tu primera brazada, sin enredos.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h4>Escribes</h4>
+          <p>Por WhatsApp. Me cuentas la edad del estudiante, nivel actual y qué quieres lograr.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">02</div>
+          <h4>Elegimos plan</h4>
+          <p>Te recomiendo el plan y paquete ideal según el caso. Revisamos horarios disponibles.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">03</div>
+          <h4>Te uniformas</h4>
+          <p>Reservas tu cupo, recibes el gorro Antares y confirmas tu fecha de inicio (día 1 o 15).</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">04</div>
+          <h4>Empiezas a nadar</h4>
+          <p>Llegas a tu primera clase. Avanzas a tu ritmo, con un grupo que te acompaña.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= TESTIMONIOS ============= -->
+  <section class="testi">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="section-eyebrow">Lo que dicen las familias</div>
+        <h2 class="section-title">Historias reales del equipo.</h2>
+      </div>
+
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <p class="quote">Mi hijo llegó con miedo al agua. Hoy nada en grupo, hace ejercicios y no quiere salirse de la piscina. La paciencia del profe Diego fue clave.</p>
+          <div class="testi-author">
+            <div class="author-avatar">CM</div>
+            <div>
+              <div class="author-name">Catalina M.</div>
+              <div class="author-role">Mamá de Lucas (8 años) · Plan FLEX</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal">
+          <p class="quote">A los 38 años decidí que era hora de aprender bien. En 3 meses pasé de no aguantar 25m a hacer mis primeros 500m sin parar.</p>
+          <div class="testi-author">
+            <div class="author-avatar">AP</div>
+            <div>
+              <div class="author-name">Andrés P.</div>
+              <div class="author-role">Adulto · Plan EVOLUCIÓN</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal">
+          <p class="quote">Buscaba mejorar mi técnica para triatlón. Diego no improvisa: cada clase tiene un propósito y se nota. Mis tiempos lo demuestran.</p>
+          <div class="testi-author">
+            <div class="author-avatar">MV</div>
+            <div>
+              <div class="author-name">María V.</div>
+              <div class="author-role">Adulta · Plan PRO</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= FAQ ============= -->
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center; max-width:760px; margin:0 auto;">
+        <div class="section-eyebrow">Preguntas frecuentes</div>
+        <h2 class="section-title" style="margin: 0 auto 18px;">Lo que las familias suelen preguntar.</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <div class="faq-q">
+            <span>¿4 u 8 clases al mes? ¿Cuál me conviene?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a">El paquete de <strong>8 clases siempre tiene mejor precio por clase</strong> y un ahorro real (entre $40.000 y $90.000 según el plan). Si tu objetivo es progresar de verdad, 2 clases por semana son ideales. El paquete de 4 funciona mejor como acompañamiento, mantenimiento o para empezar suave.</div>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <div class="faq-q">
+            <span>¿Para qué edad son las clases?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a">Trabajo con <strong>niños desde los 5 años, jóvenes y adultos sin límite de edad</strong>. Cada grupo se organiza por edad y nivel, para que el aprendizaje sea coherente.</div>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <div class="faq-q">
+            <span>¿Cuánto dura cada clase?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a"><strong>Una hora exacta de tiempo en el agua.</strong> El cambio antes y después de la clase corre por tu cuenta.</div>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <div class="faq-q">
+            <span>¿Necesito saber nadar para empezar?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a">No. Recibimos desde principiantes absolutos hasta nadadores avanzados. En el Plan FLEX el énfasis es justamente seguridad, confianza y técnica base.</div>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <div class="faq-q">
+            <span>¿Qué pasa si no puedo asistir a una clase?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a">Para mantener la calidad y el orden del grupo, <strong>no hay reposición de clases ni reembolso por inasistencia</strong>. Manejamos horarios flexibles — al iniciar tu plan elegirás los que mejor encajen en tu rutina, sujetos a los horarios del Club House y a la agenda del profesor.</div>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <div class="faq-q">
+            <span>¿Qué necesito traer?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a">Vestido de baño, toalla, sandalias y gafas de natación. El <strong>gorro Antares ($75.000 pago único)</strong> se entrega al iniciar y su uso es obligatorio para todas las clases.</div>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <div class="faq-q">
+            <span>¿Cuándo empieza el plan?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a">Cada plan tiene una vigencia de <strong>30 días calendario</strong> y dos fechas de inicio cada mes: <strong>el día 1 o el día 15</strong>. Eliges la que mejor se acomode a tu agenda.</div>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <div class="faq-q">
+            <span>¿Puedo cambiar de plan o paquete más adelante?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a">Por supuesto. Muchos empiezan con 4 clases y suben a 8 cuando se enganchan, o cambian de FLEX a EVOLUCIÓN. Los cambios se aplican al iniciar el siguiente período (día 1 o día 15).</div>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <div class="faq-q">
+            <span>¿Dónde son las clases?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a">Las sesiones presenciales se realizan en la piscina privada del Club House de Tierra Colina, un espacio exclusivo y optimizado para enfocarnos al 100% en tu técnica.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= CTA FINAL ============= -->
+  <section class="cta-final">
+    <div class="cta-final-inner">
+      <h2>¿No sabes qué <em>plan</em> elegir?</h2>
+      <p>Escríbeme por WhatsApp. En 2 minutos te ayudo a escoger el plan y paquete ideal según la edad, el nivel y el objetivo.</p>
+      <button class="btn-cta-final" onclick="contactarWhatsApp('CONSULTA-GENERAL')">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px;"><path d="M20.5 3.5A12 12 0 0 0 2.5 19l-1.5 5 5.2-1.4A12 12 0 1 0 20.5 3.5zM12 21a9 9 0 0 1-4.6-1.3l-.3-.2-3.1.8.8-3-.2-.3A9 9 0 1 1 12 21z"/></svg>
+        Escríbeme por WhatsApp
+      </button>
+    </div>
+  </section>
+
+  <!-- ============= FOOTER ============= -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-brand">Diego Bonilla · Antares Performance Team</div>
+      <div>Bogotá · Colombia</div>
+      <div class="foot-divider"></div>
+      <div>
+        📲 WhatsApp <a href="https://wa.me/573002591978" target="_blank" rel="noopener">300 259 1978</a><br>
+        Niños · Jóvenes · Adultos · Familia
+      </div>
+      <div style="margin-top:24px; font-size:0.8rem; opacity:0.5;">© 2026 Antares Performance Team. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <!-- ============= WHATSAPP FLOTANTE ============= -->
+  <div class="wa-float" onclick="contactarWhatsApp('CONSULTA-GENERAL')">
+    <span class="wa-tooltip">Escríbeme por WhatsApp</span>
+    <svg viewBox="0 0 24 24"><path d="M20.5 3.5A12 12 0 0 0 2.5 19l-1.5 5 5.2-1.4A12 12 0 1 0 20.5 3.5zM12 21a9 9 0 0 1-4.6-1.3l-.3-.2-3.1.8.8-3-.2-.3A9 9 0 1 1 12 21zm5.1-6.7c-.3-.1-1.6-.8-1.9-.9s-.4-.1-.6.1-.7.9-.8 1.1-.3.1-.5 0-1.2-.4-2.3-1.4c-.8-.7-1.4-1.7-1.6-1.9s0-.3.1-.5.2-.3.4-.4.1-.2.2-.4 0-.3 0-.4-.6-1.5-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3s-.9.9-.9 2.2.9 2.6 1.1 2.8 1.9 2.9 4.6 4c.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/></svg>
+  </div>
+
+  <script>
+    const PHONE = "573002591978";
+
+    const PRICES = {
+      "FLEX":      { "4": "215.000", "8": "340.000" },
+      "EVOLUCIÓN": { "4": "215.000", "8": "350.000" },
+      "PRO":       { "4": "240.000", "8": "440.000" }
+    };
+
+    function contactarWhatsApp(plan, freq){
+      let msg;
+      if(plan === "CONSULTA-GENERAL"){
+        msg = `Hola Diego 👋 Vi tu página de clases de natación y quiero información. La clase es para: _____ (edad). Nivel actual: _____. ¿Qué plan me recomiendas?`;
+      } else {
+        const precio = PRICES[plan][freq];
+        msg = `Hola Diego 👋 Quiero información del *Plan ${plan}* con paquete de *${freq} clases / mes* ($${precio} COP). Para: _____ (edad). Nivel actual: _____. ¿En qué horarios hay cupo?`;
+      }
+      window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`, "_blank");
+    }
+
+    function toggleFaq(el){
+      const wasOpen = el.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if(!wasOpen) el.classList.add('open');
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>
-
